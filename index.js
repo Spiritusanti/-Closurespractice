@@ -72,23 +72,46 @@
 
 // if we place it inside an object?
 
-const startOnce2 = {
-  view: '',
-  initialize: () => {
-    let called = 0;
-  return function() {
-    if (called > 0) {
+// const startOnce2 = {
+//   view: '',
+//   initialize: () => {
+//     let called = 0;
+//   return function() {
+//     if (called > 0) {
+//       return;
+//     } else {
+//       startOnce2.view = 'solved';
+//       called++;
+//       console.log('solved the problem!')
+//     }
+//   }
+//   },
+// }
+
+// startOnce2.initialize()();
+// startOnce2.initialize()();
+// startOnce2.initialize()();
+// doesn't solve the problem.....
+
+
+// Mohit's answer utilizing an IIFE:
+// how does this solution work?
+
+let view;
+const viewImage = (function initialize() {
+  let called = 0;
+  return function(){
+    if (called > 0){
       return;
     } else {
-      startOnce2.view = 'solved';
-      called++;
-      console.log('solved the problem!')
+      view = 'Thanks Mohit!';
+      called++
+      console.log('view has been set!')
     }
   }
-  },
-}
+})();
 
-startOnce2.initialize()();
-startOnce2.initialize()();
-startOnce2.initialize()();
-// doesn't solve the problem.....
+viewImage()
+viewImage()
+viewImage()
+viewImage()
